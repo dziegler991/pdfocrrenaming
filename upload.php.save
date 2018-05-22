@@ -1,0 +1,18 @@
+<?php
+$targetfolder = "uploads/pdf/ ";
+$targetfile = $targetfolder . basename( $_FILES['uploadedpdf']['name']) ;
+
+if(move_uploaded_file($_FILES['uploadedpdf']['tmp_name'], $targetfolder))
+
+ {
+
+ echo "The file ". basename( $_FILES['uploadedpdf']['name']). " is uploaded"
+}
+
+ else {
+
+ echo "Problem uploading file";
+
+ }
+
+?>

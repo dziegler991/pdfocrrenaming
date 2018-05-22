@@ -1,0 +1,21 @@
+<?php
+
+$targetfolder = "uploads/pdf/";
+$targetfolder = $targetfolder . basename( $_FILES['uploadedpdf']['name']);
+
+if(move_uploaded_file($_FILES['uploadedpdf']['tmp_name'], $targetfolder))
+
+ {
+
+ echo "The file ". basename( $_FILES['uploadedpdf']['name']). " is uploaded";
+ echo '<form name="submit" method="post" action="convert.php">';
+ echo 'Convert to OCR Text: <input type="submit" name="convert" value="Convert">';
+ echo '</form>';
+}
+
+ else  {
+
+ echo "Problem uploading file";
+ }
+
+?>

@@ -1,0 +1,35 @@
+/*
+Error: Invalid @import: expected end of line, was ";".
+        on line 1 of /var/www/html/css/style.css
+
+1: @import "compass/css3";
+2: @import url("https://fonts.googleapis.com/css?family=Lato");
+3: * {
+4:   margin: 0;
+5:   padding: 0;
+6:   -moz-box-sizing: border-box;
+
+Backtrace:
+/var/www/html/css/style.css:1
+/var/lib/gems/2.1.0/gems/sass-3.4.25/lib/sass/engine.rb:1016:in `parse_import_directive'
+/var/lib/gems/2.1.0/gems/sass-3.4.25/lib/sass/engine.rb:820:in `parse_directive'
+/var/lib/gems/2.1.0/gems/sass-3.4.25/lib/sass/engine.rb:654:in `parse_line'
+/var/lib/gems/2.1.0/gems/sass-3.4.25/lib/sass/engine.rb:539:in `build_tree'
+/var/lib/gems/2.1.0/gems/sass-3.4.25/lib/sass/engine.rb:558:in `block in append_children'
+/var/lib/gems/2.1.0/gems/sass-3.4.25/lib/sass/engine.rb:557:in `each'
+/var/lib/gems/2.1.0/gems/sass-3.4.25/lib/sass/engine.rb:557:in `append_children'
+/var/lib/gems/2.1.0/gems/sass-3.4.25/lib/sass/engine.rb:412:in `_to_tree'
+/var/lib/gems/2.1.0/gems/sass-3.4.25/lib/sass/engine.rb:384:in `_render_with_sourcemap'
+/var/lib/gems/2.1.0/gems/sass-3.4.25/lib/sass/engine.rb:301:in `render_with_sourcemap'
+/var/lib/gems/2.1.0/gems/sass-3.4.25/lib/sass/exec/sass_scss.rb:391:in `run'
+/var/lib/gems/2.1.0/gems/sass-3.4.25/lib/sass/exec/sass_scss.rb:63:in `process_result'
+/var/lib/gems/2.1.0/gems/sass-3.4.25/lib/sass/exec/base.rb:52:in `parse'
+/var/lib/gems/2.1.0/gems/sass-3.4.25/lib/sass/exec/base.rb:19:in `parse!'
+/var/lib/gems/2.1.0/gems/sass-3.4.25/bin/sass:13:in `<top (required)>'
+/usr/local/bin/sass:23:in `load'
+/usr/local/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid @import: expected end of line, was \";\".\A         on line 1 of /var/www/html/css/style.css\A \A 1: @import \"compass/css3\";\A 2: @import url(\"https://fonts.googleapis.com/css?family=Lato\");\A 3: * {\A 4:   margin: 0;\A 5:   padding: 0;\A 6:   -moz-box-sizing: border-box;"; }

@@ -1,0 +1,55 @@
+<html>
+<head>
+<h2>Upload PDF for OCR</h2>
+</head>
+<body>
+<fieldset><legend><b>Select PDF</b></legend>
+Choose a file to be uploaded<br><br>
+<form action="" method="post" enctype="multipart/form-data">
+<input type="file" accept=".pdf"  name="file[]" multiple />
+<br><br>
+Enter: <input type="text" name="prefix" placeholder="Prefix for PDF Files">
+<br><br>
+<input type="submit" name="upload" value="Upload and Convert" /> 
+</form>
+</fieldset>
+</body>
+</html> 
+
+
+<?php
+
+error_reporting(-1);
+ini_set('display_errors', 'On');
+
+if (!empty($_POST['upload'])){
+    foreach ($_FILES['file']['tmp_name'] as $file) {
+        $directory = "/var/www/html/uploads/pdf/";
+        $filecount = 0;
+        exec("mogrify -format png -density 150 -depth 8 -strip -background white -alpha off $file");
+        exec("tesseract -l eng {$file}.png $file");
+        $arr = [];
+        $contents = file("{$file}.txt");
+        $contents1 = implode($contents);
+        $targetdirectory = "/var/www/html/uploads/pdf/"; 
+        preg_match_all("/^\S.*$/m", $contents1, $arr);
+        $arrName = $arr[0][2] ;
+        $name = str_replace(" ", "_", $arr[0][2]);
+        $prefix = ($_POST['prefix']);
+        rename($file, "{$targetdirectory}/{$prefix}_{$name}.pdf");
+        $zip->addFile($directory)
+	$zip->close();
+        header('Content-Type: application/zip');
+        header("Content-Disposition: attachment; filename='adcs.zip'");
+        header('Content-Length: ' . filesize($zipname));
+        header("Location: adcs.zip");
+        // print_r($arr[0][2]);
+        echo "<br></br>"; 
+    }
+    $zipname = 'adcs.zip';
+    $zip = new ZipArchive;
+    $zip->open($zipname, ZipArchive::CREATE);
+}
+
+
+?>

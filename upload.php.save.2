@@ -1,0 +1,24 @@
+<?php
+$targetfolder = "uploads/";
+$targetfolder = $targetfolder . basename( $_FILES['uploadedpdf']['name']) ;
+
+if(move_uploaded_file($_FILES['uploadedpdf']['tmp_name'], $targetfolder))
+
+ {
+
+ echo "The file ". basename( $_FILES['uploadedpdf']['name']). " is uploaded";
+<?php  if( isset( $_SESSION['someValue'] ) ): ?>
+<form action="index.php" method="post">
+    <p>Whatevs...</p>
+</form>
+<?php endif; ?>
+
+
+ else {
+
+ echo "Problem uploading file";
+
+ }
+
+?>
+
